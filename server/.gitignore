@@ -1,0 +1,6 @@
+node_modules
+.env
+dist/
+
+
+# mongodb+srv://hejazimohammad764:JZK1A0wjYXLiqtpa@cluster0.aerywzk.mongodb.net/
