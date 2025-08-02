@@ -155,7 +155,7 @@ MIT
 
 ## Author
 
-- [Mohammad Umar Al Hejazi](https://github.com/yourusername)
+- [Mohammad Umar Al Hejazi](https://github.com/hejazi-zarkawi)
 
 ---
 
