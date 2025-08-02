@@ -105,7 +105,7 @@ const ShoppingHome = () => {
         })
       }
 
-  console.log(productsList, "productsList")
+  // console.log(productsList, "productsList")
 
   useEffect(()=>{
       dispatch(getFeatureImages())

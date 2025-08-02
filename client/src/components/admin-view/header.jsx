@@ -3,25 +3,31 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Button } from '@/components/ui/button'
 import { FiLogOut } from 'react-icons/fi'
 import { useDispatch } from 'react-redux'
-import { logoutUser } from '@/store/auth-slice'
+import { logoutUser, resetTokenAndCredentials } from '@/store/auth-slice'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const AdminHeader = ({setOpen}) => {
 
   const dispatch = useDispatch();
+  const navigate= useNavigate()
 
   const handleLogout = ()=>{
 
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if(!confirmLogout) return;
-    dispatch(logoutUser()).then((data)=>{
-      if(data?.payload?.success){
-        toast.success(data?.payload?.message);
-      }
-      else{
-        toast.error(data?.payload?.message);
-      }
-    })
+    // dispatch(logoutUser()).then((data)=>{
+    //   if(data?.payload?.success){
+    //     toast.success(data?.payload?.message);
+    //   }
+    //   else{
+    //     toast.error(data?.payload?.message);
+    //   }
+    // })
+    dispatch(resetTokenAndCredentials());
+    toast.success("User Logged Out Successfully!!!")
+    sessionStorage.clear();
+    navigate("/auth/login")
   }
   return (
     <header className='flex bg-background items-center justify-between p-4 pl-8 '>

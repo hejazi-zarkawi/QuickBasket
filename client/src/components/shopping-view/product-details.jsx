@@ -89,7 +89,7 @@ const ProductDetailsDialog = ({ open, setOpen, productDetails }) => {
         })
     }
 
-    console.log(reviews, "Reviews")
+    // console.log(reviews, "Reviews")
     return (
         <Dialog open={open} onOpenChange={()=>{
             setOpen(false);

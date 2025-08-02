@@ -30,10 +30,11 @@ function App() {
   const isLoading = useSelector((state)=> state.auth.isLoading)
 
   useEffect(()=>{
-    dispatch(checkAuth()).then((data)=>{
-      console.log(data.payload.message);
+    const token = JSON.parse(sessionStorage.getItem('token'))
+    dispatch(checkAuth(token)).then((data)=>{
+      // console.log(data.payload.message);
     })
-  },[])
+  },[dispatch])
 
   if(isLoading){
     return (

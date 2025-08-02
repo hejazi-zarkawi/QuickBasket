@@ -44,7 +44,7 @@ const ShoppingListing = () => {
       }
     }
 
-    console.log(queryParams, "queryParams");
+    // console.log(queryParams, "queryParams");
 
     return queryParams.join("&");
   }
@@ -141,7 +141,7 @@ const ShoppingListing = () => {
     })}
   }, [dispatch, filter, sort])
 
-    console.log(productsList, "productsListproductsListproductsList")
+    // console.log(productsList, "productsListproductsListproductsList")
 
   return (
     <>

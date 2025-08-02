@@ -68,16 +68,21 @@ export const loginUser = async(req,res) =>{
                     userName: existingUser.userName
                 },'SECRET_KEY', { expiresIn: '1d'});
 
-                const cookieOptions ={
-                    httpOnly: true,
-                    secure: false,
-                    maxAge : 24 * 60 * 60 * 1000,
-                }
+                // const cookieOptions ={
+                //     httpOnly: true,
+                //     secure: false,
+                //     maxAge : 24 * 60 * 60 * 1000,
+                // }
 
-                res.cookie('token', token, cookieOptions)
+                // res.cookie('token', token, cookieOptions)
                 const {password, ...userData} = existingUser._doc;
                 console.log(userData)
-                return res.status(200).json({success: true, message: "User logged in successfully", user: userData});
+                return res.status(200).json({
+                    success: true,
+                    message: "User logged in successfully",
+                    token, 
+                    user: userData
+                });
             }
 
         }
@@ -95,8 +100,31 @@ export const logoutUser = async(req,res)=>{
     })
 }
 
+// export const authMiddleware = async(req,res,next)=>{
+//     const token = req.cookies.token;
+//     if(!token){
+//         return res.status(401).json({
+//             success: false,
+//             message : "Not Authenticated! Please login first."
+//         })
+//     }
+
+//     try{
+//         const decoded = jwt.verify(token, 'SECRET_KEY');
+//         req.user = decoded;
+//         next();
+//     }
+//     catch(error){
+//         return res.status(500).json({
+//             sucess: false,
+//             message: "Error while authenticating user."
+//         })
+//     }
+// }
+
 export const authMiddleware = async(req,res,next)=>{
-    const token = req.cookies.token;
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
     if(!token){
         return res.status(401).json({
             success: false,
@@ -116,3 +144,4 @@ export const authMiddleware = async(req,res,next)=>{
         })
     }
 }
+

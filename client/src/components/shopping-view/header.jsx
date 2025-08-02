@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback } from '@radix-ui/react-avatar';
 import { DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from '../ui/dropdown-menu';
 import { FaRegUserCircle } from "react-icons/fa";
 import { FiLogOut } from 'react-icons/fi';
-import { logoutUser } from '@/store/auth-slice';
+import { logoutUser, resetTokenAndCredentials } from '@/store/auth-slice';
 import toast from 'react-hot-toast';
 import UserCartWrapper from './cart-wrapper';
 import { fetchCartItems } from '@/store/shop/cart-slice';
@@ -63,14 +63,18 @@ function RightMenuHeader() {
 
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (!confirmLogout) return;
-    dispatch(logoutUser()).then((data) => {
-      if (data?.payload?.success) {
-        toast.success(data?.payload?.message);
-      }
-      else {
-        toast.error(data?.payload?.message);
-      }
-    })
+    // dispatch(logoutUser()).then((data) => {
+    //   if (data?.payload?.success) {
+    //     toast.success(data?.payload?.message);
+    //   }
+    //   else {
+    //     toast.error(data?.payload?.message);
+    //   }
+    // })
+    dispatch(resetTokenAndCredentials());
+    toast.success("User Logged Out Successfully!!!")
+    sessionStorage.clear();
+    navigate("/auth/login")
   }
 
   useEffect(() => {

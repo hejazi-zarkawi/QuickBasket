@@ -18,7 +18,7 @@ const ShoppingCheckout = () => {
 
   const dispatch = useDispatch();
 
-  console.log(cartItems," CartItems from checkout")
+  // console.log(cartItems," CartItems from checkout")
 
   const totalCartAmount =
     cartItems && cartItems.items && cartItems.items.length > 0
@@ -33,7 +33,7 @@ const ShoppingCheckout = () => {
       )
       : 0;
 
-      console.log(currentSelectedAddress, "current Selected Address")
+      // console.log(currentSelectedAddress, "current Selected Address")
 
   function handleInitiatePaypalPayment() {
 

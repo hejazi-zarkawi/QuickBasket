@@ -45,7 +45,7 @@ const ProductImageUpload = ({ image, setImage, uploadedImageUrl, setUploadedImag
           const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/products/upload-image`,data)
           
           if(response?.data?.success) {
-            console.log("Image uploaded successfully:", response.data.result.url);
+            // console.log("Image uploaded successfully:", response.data.result.url);
             setimageAlreadyUploaded(true)
             setUploadedImageUrl(response.data.result.url)
             setImageUploadLoading(false);

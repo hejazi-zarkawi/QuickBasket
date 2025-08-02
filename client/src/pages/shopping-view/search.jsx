@@ -70,7 +70,7 @@ const SearchProducts = () => {
         if(keyword && keyword.trim()){
            const handler = setTimeout(()=>{
                 dispatch(getSearchResults(keyword))
-                console.log("dispatcg")
+               
             },1500)
 
             return (()=> clearTimeout(handler))

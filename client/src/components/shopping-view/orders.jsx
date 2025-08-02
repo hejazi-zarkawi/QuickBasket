@@ -33,7 +33,7 @@ const ShoppingOrders = () => {
   //   if (orderDetails !== null) setOpenDialogDetails(true);
   // }, [orderDetails])
 
-  console.log(orderDetails, "orderDetails")
+  // console.log(orderDetails, "orderDetails")
 
   return (
     <Card>
